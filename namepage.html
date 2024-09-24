@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="namepage.css">
+  <title>Document</title>
+  <style>
+    #map-container {
+      position: relative;
+      margin: 20px auto;
+      display: inline-block;
+    }
+
+    #saudi-map {
+      width: 600px;
+      height: auto;
+      filter: brightness(100%);
+    }
+
+    .pin {
+      position: absolute;
+      font-size: 3vh;
+      color: red;
+    }
+  </style>
+</head>
+
+<body dir="rtl">
+  <div class="flex-img">
+    <img class="img" src="logo.png" alt="">
+  </div>
+  <div class="flex">
+    <div class="box">
+      <img class="img2" src="logo8.png" alt="">
+      <h1 class="h1">مبروك!</h1>
+      <br>
+      <button class="btn">إنهاء اللعب </button>
+    </div>
+    <div class="box2">
+      <ul id="correct-answers-list"></ul>
+
+      <div id="map-container">
+        <img src="صورة.webp" id="saudi-map" alt="خريطة السعودية">
+        <div id="pin-riyadh" class="pin" style="top: 50%; left: 50%;"><i class="fa-solid fa-location-dot"></i></div>
+        <div id="pin-dammam" class="pin" style="top: 55%; left: 75%;"><i class="fa-solid fa-location-dot"></i></div>
+        <div id="pin-mecca" class="pin" style="top: 60%; left: 30%;"><i class="fa-solid fa-location-dot"></i></div>
+        <div id="pin-taif" class="pin" style="top: 70%; left: 33%;"><i class="fa-solid fa-location-dot"></i></div>
+        <div id="pin-jouf" class="pin" style="top: 15%; left: 20%;"><i class="fa-solid fa-location-dot"></i></div> 
+        <div id="pin-qassim" class="pin" style="top: 35%; left: 40%;"><i class="fa-solid fa-location-dot"></i></div>
+        <div id="pin-ahsa" class="pin" style="top: 65%; left: 78%;"><i class="fa-solid fa-location-dot"></i></div>
+        <div id="pin-hail" class="pin" style="top: 27%; left: 35%;"><i class="fa-solid fa-location-dot"></i></div>
+        <div id="pin-madina" class="pin" style="top: 45%; left: 25%;"><i class="fa-solid fa-location-dot"></i></div>
+        <div id="pin-jeddah" class="pin" style="top: 65%; left: 25%;"><i class="fa-solid fa-location-dot"></i></div>
+        
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/b1d19b5b3e.js" crossorigin="anonymous"></script>
+
+
+
+  <script>
+    window.onload = function () {
+      const pins = document.querySelectorAll('.pin');
+      pins.forEach(pin => {
+        pin.style.display = 'none'; 
+      });
+
+      const correctAnswers = JSON.parse(localStorage.getItem('correctAnswers')) || [];
+      console.log('الإجابات الصحيحة:', correctAnswers); 
+
+      correctAnswers.forEach(answer => {
+        console.log('الإجابة الحالية:', answer); 
+        switch (answer) {
+          case 1:
+            document.getElementById('pin-dammam').style.display = 'block'; 
+            break;
+          case 2:
+            document.getElementById('pin-mecca').style.display = 'block';
+            break;
+          case 3:
+            document.getElementById('pin-taif').style.display = 'block'; 
+            break;
+          case 4:
+            document.getElementById('pin-jouf').style.display = 'block'; 
+            break;
+          case 5:
+            document.getElementById('pin-ahsa').style.display = 'block'; 
+            break;
+          case 6:
+            document.getElementById('pin-qassim').style.display = 'block';
+            break;
+          case 7:
+            document.getElementById('pin-riyadh').style.display = 'block'; 
+            break;
+          case 8:
+            document.getElementById('pin-hail').style.display = 'block';
+            break;
+            case 9:
+            document.getElementById('pin-madina').style.display = 'block'; 
+            break;
+          case 10:
+            document.getElementById('pin-jeddah').style.display = 'block';
+            break;
+          default:
+            console.log('إجابة غير معروفة:', answer); 
+        }
+      });
+      localStorage.removeItem('correctAnswers');
+
+    } 
+  </script>
+
+
+</body>
+
+</html>
